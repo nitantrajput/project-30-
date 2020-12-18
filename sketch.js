@@ -10,6 +10,8 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
+    ground = new Ground(width/2,height,width,5);
+
     ground1 = new Ground(400,560,300,20);
 
     polygon = new Polygon(100,300,50,50)
@@ -76,7 +78,7 @@ function setup(){
     slingshot = new SlingShot(polygon.body,{x:100, y:300});
 }
 function draw(){
-    backgroung(0);
+    background(0);
 
     ground1.display();
     ground2.display();
@@ -125,9 +127,10 @@ function draw(){
     box42.display();
     box43.display();
     polygon.display();
+    ground.display();
 }
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
 }
 
 
@@ -136,6 +139,6 @@ function mouseReleased(){
 }
 function keyPressed(){
     if(keyCode === 32){
-       slingshot.attach(bird.body);
+       slingshot.attach(polygon.body);
     }
 }
